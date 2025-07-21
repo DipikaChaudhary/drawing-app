@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.canvas-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f4f8;
+  background-image:
+    linear-gradient(rgba(156, 163, 175, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 163, 175, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.shape {
+  position: absolute;
+  cursor: move;
+  user-select: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.shape.selected {
+  outline: 2px solid #3b82f6;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.rotate-handle {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.rotate-handle svg {
+  color: #3b82f6;
+}
+
+.rotate-line {
+  position: absolute;
+  background-color: #3b82f6;
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+}
+
+.toolbar-btn {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 
-.App-link {
-  color: #61dafb;
+.toolbar-btn:hover {
+  background-color: #e5e7eb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toolbar-btn.active {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.color-picker {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
 }

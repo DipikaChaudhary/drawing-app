@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Toolbar from "./common/Toolbar";
+import Canvas from "./components/Canvas";
+import { CanvasProvider } from "./context/CanvasContext";
+import "./App.css";
+import Header from "./common/Header";
+import { SnackbarProvider } from "./context/SnackbarContext";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SnackbarProvider>
+      <CanvasProvider>
+        <div className="flex flex-col h-screen">
+          <Header />
+          <div className="flex flex-1 overflow-hidden">
+            <Toolbar />
+            <Canvas />
+          </div>
+        </div>
+      </CanvasProvider>
+    </SnackbarProvider>
   );
-}
+};
 
 export default App;
